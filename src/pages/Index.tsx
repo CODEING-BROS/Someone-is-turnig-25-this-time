@@ -7,7 +7,9 @@ import BalloonScreen from "@/components/screens/BalloonScreen";
 import WordAnimationScreen from "@/components/screens/WordAnimationScreen";
 import MemoryCardsScreen from "@/components/screens/MemoryCardsScreen";
 import BirthdayCardScreen from "@/components/screens/BirthdayCardScreen";
+
 import FinalGiftScreen from "@/components/screens/FinalGiftScreen";
+import VideoScreen from "@/components/screens/VideoScreen";
 
 type Screen = 
   | "countdown"
@@ -17,7 +19,8 @@ type Screen =
   | "words"
   | "memories"
   | "card"
-  | "gift";
+  | "gift"
+  | "video";
 
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>("countdown");
@@ -78,6 +81,12 @@ const Index = () => {
         {currentScreen === "gift" && (
           <FinalGiftScreen 
             key="gift" 
+            onReplay={() => goToScreen("video")} 
+          />
+        )}
+        {currentScreen === "video" && (
+          <VideoScreen 
+            key="video" 
             onReplay={replay} 
           />
         )}

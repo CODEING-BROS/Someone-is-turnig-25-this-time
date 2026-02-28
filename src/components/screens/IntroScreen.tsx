@@ -45,6 +45,9 @@ const IntroScreen = ({ onNext }: IntroScreenProps) => {
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.5 }}
     >
+
+      {/* --- SONG PLAYER (play on button click, skip 14s) --- */}
+      <audio id="intro-audio" src="/songs/1st.m4a" preload="auto" style={{ display: "none" }} />
       <FloatingHearts count={15} />
       <Sparkles count={20} />
 
@@ -72,7 +75,17 @@ const IntroScreen = ({ onNext }: IntroScreenProps) => {
         I have a little surprise waiting just for you...
       </motion.p>
 
-      <MagicButton onClick={onNext} delay={1.2}>
+      <MagicButton
+        onClick={() => {
+          const audio = document.getElementById("intro-audio") as HTMLAudioElement | null;
+          if (audio) {
+            audio.currentTime = 14;
+            audio.play();
+          }
+          onNext();
+        }}
+        delay={1.2}
+      >
         Start the Surprise ✨
       </MagicButton>
     </motion.div>

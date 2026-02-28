@@ -8,7 +8,7 @@ interface WordAnimationScreenProps {
 }
 
 const WordAnimationScreen = ({ onNext }: WordAnimationScreenProps) => {
-  const words = ["How", "was", "the", "cake?"];
+  const words = ["कस", "हरछी", "केक", "पे ?"];
 
   return (
     <motion.div

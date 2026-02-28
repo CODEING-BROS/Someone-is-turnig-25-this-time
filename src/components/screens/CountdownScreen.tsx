@@ -14,6 +14,13 @@ const CountdownScreen = ({ onComplete }: CountdownScreenProps) => {
   const FRAME = 1600; // 1.6s – perfect for dramatic numbers
 
   useEffect(() => {
+    // Play audio on mount (user interaction should have occurred)
+    const audio = document.getElementById("countdown-audio") as HTMLAudioElement | null;
+    if (audio) {
+      audio.currentTime = 14;
+      audio.play();
+    }
+
     if (count === 0) {
       const timer = setTimeout(onComplete, FRAME);
       return () => clearTimeout(timer);
@@ -34,6 +41,9 @@ const CountdownScreen = ({ onComplete }: CountdownScreenProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+
+      {/* --- SONG PLAYER (auto, skip 14s) --- */}
+      <audio id="countdown-audio" src="/songs/1st.m4a" preload="auto" style={{ display: "none" }} />
       <FloatingHearts count={20} />
       <Sparkles count={30} />
 

@@ -297,7 +297,7 @@ const FinalGiftScreen = ({ onReplay }: FinalGiftScreenProps) => {
               className="mt-8"
             >
               <MagicButton onClick={onReplay}>
-                Replay the Magic 🔄
+                Watch Special Video 🎬
               </MagicButton>
             </motion.div>
           </motion.div>
